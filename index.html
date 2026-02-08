@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I'll be waiting for you</title>
+  <style>
+    :root {
+      --bg: #fff4f8;
+      --text: #4a1f2f;
+      --muted: #8a4b63;
+      --accent: #f4a6c1;
+      --accent-2: #ffd66b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fff1f6, #fff9e6);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    header {
+      text-align: center;
+      padding: 5rem 1.5rem 3rem;
+      animation: fadeDown 2s ease forwards;
+      opacity: 0;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      color: var(--muted);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .quote {
+      border-left: 4px solid var(--accent-2);
+      margin: 2.5rem 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+      background: rgba(255, 214, 107, 0.15);
+      border-radius: 12px;
+      padding: 1.5rem;
+      animation: fadeUp 2s ease forwards;
+      opacity: 0;
+      animation-delay: 0.6s;
+    }
+
+    .letter {
+      background: linear-gradient(180deg, rgba(244,166,193,0.35), rgba(255,214,107,0.25));
+      padding: 2.2rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(244,166,193,0.25);
+      animation: fadeUp 2s ease forwards, float 6s ease-in-out infinite;
+      opacity: 0;
+      animation-delay: 1.2s;
+    }
+
+    .letter p {
+      margin-bottom: 1.2rem;
+    }
+
+    footer {
+      animation: fadeUp 2s ease forwards;
+      opacity: 0;
+      animation-delay: 2s;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      background: linear-gradient(90deg, rgba(244,166,193,0.2), rgba(255,214,107,0.2));
+    }
+
+    .heart {
+      color: #f08db1;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+    }
+  @keyframes backgroundShift {
+      0% {
+        background: linear-gradient(135deg, #fff1f6, #fff9e6);
+      }
+      50% {
+        background: linear-gradient(135deg, #ffe6f0, #fff2cc);
+      }
+      100% {
+        background: linear-gradient(135deg, #fff1f6, #fff9e6);
+      }
+    }
+
+    body {
+      animation: backgroundShift 20s ease-in-out infinite;
+    }
+
+    .hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.5s ease, transform 1.5s ease;
+      margin-top: 3rem;
+      text-align: center;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .hidden.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Finding Our Way Back</h1>
+    <p>For us. For what we were. For what we might still become.</p>
+  </header>
+
+  <section>
+    <div class="quote">
+      “Some love doesn’t end. It pauses — waiting for the right moment to speak again.”
+    </div>
+
+    <div class="letter">
+      <p>This is not an apology. And it is not a promise.</p>
+
+      <p>It is an open door.</p>
+
+      <p>We walked away carrying unfinished sentences and feelings that never learned how to end. Time passed, and in that time, I learned — about myself, about love, about what truly matters.</p>
+
+      <p>I don’t believe in going back to who we were. But I do believe in meeting again as who we are now.</p>
+
+      <p>If our paths cross once more, I hope it is not out of loneliness, but choice. Not out of habit, but understanding.</p>
+
+      <p>And if that moment comes, I’ll be here — not waiting blindly, but ready.</p>
+    </div>
+      <div class="hidden" id="hiddenMessage">
+      Maybe someday — when time is kinder, and we are too.
+    </div>
+  </section>
+
+  <script>
+    const hiddenMessage = document.getElementById('hiddenMessage');
+    window.addEventListener('scroll', () => {
+      const triggerPoint = window.innerHeight * 0.8;
+      const rect = hiddenMessage.getBoundingClientRect();
+      if (rect.top < triggerPoint) {
+        hiddenMessage.classList.add('show');
+      }
+    });
+  </script>
+
+  <footer>
+    Made with <span class="heart">♥</span> and patience
+  </footer>
+</body>
+</html>
